@@ -1,0 +1,16 @@
+D:\GitHub\PingIpExample\PingIPAddress\PingIPAddress\bin\Debug\net8.0-windows\PingIPAddress.exe
+D:\GitHub\PingIpExample\PingIPAddress\PingIPAddress\bin\Debug\net8.0-windows\PingIPAddress.deps.json
+D:\GitHub\PingIpExample\PingIPAddress\PingIPAddress\bin\Debug\net8.0-windows\PingIPAddress.runtimeconfig.json
+D:\GitHub\PingIpExample\PingIPAddress\PingIPAddress\bin\Debug\net8.0-windows\PingIPAddress.dll
+D:\GitHub\PingIpExample\PingIPAddress\PingIPAddress\bin\Debug\net8.0-windows\PingIPAddress.pdb
+D:\GitHub\PingIpExample\PingIPAddress\PingIPAddress\obj\Debug\net8.0-windows\PingIPAddress.Form1.resources
+D:\GitHub\PingIpExample\PingIPAddress\PingIPAddress\obj\Debug\net8.0-windows\PingIPAddress.csproj.GenerateResource.cache
+D:\GitHub\PingIpExample\PingIPAddress\PingIPAddress\obj\Debug\net8.0-windows\PingIPAddress.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\PingIpExample\PingIPAddress\PingIPAddress\obj\Debug\net8.0-windows\PingIPAddress.AssemblyInfoInputs.cache
+D:\GitHub\PingIpExample\PingIPAddress\PingIPAddress\obj\Debug\net8.0-windows\PingIPAddress.AssemblyInfo.cs
+D:\GitHub\PingIpExample\PingIPAddress\PingIPAddress\obj\Debug\net8.0-windows\PingIPAddress.csproj.CoreCompileInputs.cache
+D:\GitHub\PingIpExample\PingIPAddress\PingIPAddress\obj\Debug\net8.0-windows\PingIPAddress.dll
+D:\GitHub\PingIpExample\PingIPAddress\PingIPAddress\obj\Debug\net8.0-windows\refint\PingIPAddress.dll
+D:\GitHub\PingIpExample\PingIPAddress\PingIPAddress\obj\Debug\net8.0-windows\PingIPAddress.pdb
+D:\GitHub\PingIpExample\PingIPAddress\PingIPAddress\obj\Debug\net8.0-windows\PingIPAddress.genruntimeconfig.cache
+D:\GitHub\PingIpExample\PingIPAddress\PingIPAddress\obj\Debug\net8.0-windows\ref\PingIPAddress.dll
