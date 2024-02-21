@@ -21,6 +21,7 @@ namespace PingIPAddress
         public Form1()
         {
             InitializeComponent();
+            MaximizeBox = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -51,7 +52,7 @@ namespace PingIPAddress
                 for (int i = mini; i <= maxi; i++)
                 {
                     var ip = baseAddress + i.ToString();
-                    Debug.WriteLine("Current IP is " + ip);
+                    //Debug.WriteLine("Current IP is " + ip);
 
                     tasks.Add(Task.Run(() =>
                     {
@@ -62,28 +63,14 @@ namespace PingIPAddress
                     }));
                 }
 
+                Status = "資料整理中...";
 
                 // 等待所有任務完成
                 Task.WaitAll(tasks.ToArray());
 
-                Debug.WriteLine(tasks.Count);
-                Debug.WriteLine(ResultList.Count);
-                ResultList.OrderBy(p => p.Value);
-
-
-                //for (int i = mini; i <= maxi; i++)
-                //{
-                //    var ip = baseAddress + i.ToString();
-                //    Debug.WriteLine("Current IP is " + ip);
-
-                //    bool success = PingHost(ip);
-                //    string result = success ? "有裝置使用" : "沒有裝置使用";
-
-                //   ResultList.Add(ip, result);
-                //}
                 sw.Stop();
 
-                GridViewUpdate();
+                GridViewUpdate(ResultList.OrderBy(p => p.Value).ToDictionary<string,string>());
 
                 Status = "搜尋完畢,已使用 " + sw.ElapsedMilliseconds + "毫秒"; ;
             }
@@ -107,11 +94,11 @@ namespace PingIPAddress
             }
         }
 
-        private void GridViewUpdate()
+        private void GridViewUpdate(Dictionary<string,string> list)
         {
             dataGridViewResult.Rows.Clear();
 
-            foreach (var result in ResultList)
+            foreach (var result in list)
             {
                 var success = result.Value == "有裝置使用";
                 var rowIndex = dataGridViewResult.Rows.Add(result.Key, result.Value);
@@ -122,6 +109,21 @@ namespace PingIPAddress
                 }
             }
 
+        }
+
+        private void buttonSearch2_Click(object sender, EventArgs e)
+        {
+            Stopwatch sw = Stopwatch.StartNew();
+
+            Parallel.For(1, 255,
+                index =>
+                {
+                    var ip = "192.168.1." + index;
+                    PingHost(ip);
+                });
+
+            sw.Stop();
+            Debug.WriteLine(sw.ElapsedMilliseconds + " ms");
         }
     }
 }
