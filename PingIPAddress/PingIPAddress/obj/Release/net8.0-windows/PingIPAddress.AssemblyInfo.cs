@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PingIPAddress")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a76b34fd349abde80aa1a6f2f62feae4917bc343")]
 [assembly: System.Reflection.AssemblyProductAttribute("PingIPAddress")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PingIPAddress")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
