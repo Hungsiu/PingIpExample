@@ -2,6 +2,7 @@ using System.Net.NetworkInformation;
 using System.Net;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Collections.Concurrent;
 
 namespace PingIPAddress
 {
@@ -11,11 +12,11 @@ namespace PingIPAddress
         {
             set
             {
-                BeginInvoke(() => { labelStatus.Text = value; });
+                Invoke(() => { labelStatus.Text = value; });
             }
         }
 
-        private Dictionary<string, string> ResultList = new Dictionary<string, string>();
+        private ConcurrentDictionary<string, string> ResultList = new ConcurrentDictionary<string, string>();
 
         public Form1()
         {
@@ -44,16 +45,42 @@ namespace PingIPAddress
 
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
+
+
+                var tasks = new List<Task>();
                 for (int i = mini; i <= maxi; i++)
                 {
                     var ip = baseAddress + i.ToString();
                     Debug.WriteLine("Current IP is " + ip);
 
-                    bool success = PingHost(ip);
-                    string result = success ? "有裝置使用" : "沒有裝置使用";
+                    tasks.Add(Task.Run(() =>
+                    {
+                        bool success = PingHost(ip);
+                        string result = success ? "有裝置使用" : "沒有裝置使用";
 
-                    ResultList.Add(ip, result);
+                        ResultList.TryAdd(ip, result);
+                    }));
                 }
+
+
+                // 等待所有任務完成
+                Task.WaitAll(tasks.ToArray());
+
+                Debug.WriteLine(tasks.Count);
+                Debug.WriteLine(ResultList.Count);
+                ResultList.OrderBy(p => p.Value);
+
+
+                //for (int i = mini; i <= maxi; i++)
+                //{
+                //    var ip = baseAddress + i.ToString();
+                //    Debug.WriteLine("Current IP is " + ip);
+
+                //    bool success = PingHost(ip);
+                //    string result = success ? "有裝置使用" : "沒有裝置使用";
+
+                //   ResultList.Add(ip, result);
+                //}
                 sw.Stop();
 
                 GridViewUpdate();
@@ -94,6 +121,7 @@ namespace PingIPAddress
                     dataGridViewResult.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
                 }
             }
+
         }
     }
 }
